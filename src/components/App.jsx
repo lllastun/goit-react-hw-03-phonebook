@@ -8,9 +8,27 @@ import css from './App.module.css';
 
 export class App extends Component {
   state = {
-    contacts: CONTACTS,
+    contacts: [],
     filter: '',
   };
+
+  componentDidUpdate() {
+    const { contacts } = this.state;
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }
+
+  componentDidMount() {
+    const contactsLSLength = JSON.parse(
+      localStorage.getItem('contacts')
+    )?.length;
+    if (contactsLSLength !== 0) {
+      this.setState({
+        contacts: JSON.parse(localStorage.getItem('contacts')),
+      });
+    } else {
+      this.setState({ contacts: CONTACTS });
+    }
+  }
 
   addUser = userData => {
     const newUser = {
