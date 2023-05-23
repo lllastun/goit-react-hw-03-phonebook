@@ -1,0 +1,15 @@
+p {
+  font-size: 16px;
+}
+.wrapFilter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-right: auto;
+  height: 50px;
+}
+div {
+  font-size: 16px;
+  font-weight: 500;
+}
