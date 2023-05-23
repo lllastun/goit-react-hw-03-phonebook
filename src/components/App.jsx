@@ -22,7 +22,7 @@ export class App extends Component {
     const contactsLSLength = JSON.parse(
       localStorage.getItem('contacts')
     )?.length;
-    if (contactsLSLength !== 0) {
+    if (contactsLSLength > 0) {
       this.setState({
         contacts: JSON.parse(localStorage.getItem('contacts')),
       });
