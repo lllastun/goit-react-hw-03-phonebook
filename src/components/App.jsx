@@ -14,6 +14,7 @@ export class App extends Component {
 
   componentDidUpdate() {
     const { contacts } = this.state;
+    // console.log();
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }
 
