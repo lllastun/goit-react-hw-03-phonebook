@@ -8,17 +8,15 @@ import css from './App.module.css';
 
 export class App extends Component {
   state = {
-    // contacts: localStorage.getItem('contacts')?.length
-    //   ? JSON.parse(localStorage.getItem('contacts'))
-    //   : CONTACTS,
     contacts: CONTACTS,
     filter: '',
   };
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     const { contacts } = this.state;
-    if (JSON.stringify(contacts) === localStorage.getItem('contacts')) return;
-    localStorage.setItem('contacts', JSON.stringify(contacts));
+    if (contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
   }
 
   componentDidMount() {
@@ -87,7 +85,7 @@ export class App extends Component {
         }}
       >
         {/* {localStorage.getItem('contacts').length} */}
-        {console.log(localStorage.getItem('contacts'))}
+        {/* {console.log(localStorage.getItem('contacts'))} */}
         <h1>Phonebook</h1>
         <ContactForm addUser={this.addUser} />
         <h2>Contacts</h2>
